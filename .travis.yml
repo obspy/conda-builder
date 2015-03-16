@@ -6,33 +6,20 @@ os:
 
 env:
   matrix:
-    - CONDA_PY=26 CONDA_NPY=16
-    - CONDA_PY=27 CONDA_NPY=16
-    - CONDA_PY=26 CONDA_NPY=17
-    - CONDA_PY=27 CONDA_NPY=17
-    - CONDA_PY=33 CONDA_NPY=17
-    - CONDA_PY=26 CONDA_NPY=18
-    - CONDA_PY=27 CONDA_NPY=18
-    - CONDA_PY=33 CONDA_NPY=18
-    - CONDA_PY=34 CONDA_NPY=18
-    - CONDA_PY=26 CONDA_NPY=19
-    - CONDA_PY=27 CONDA_NPY=19
-    - CONDA_PY=33 CONDA_NPY=19
-    - CONDA_PY=34 CONDA_NPY=19
+    - CONDA_PY=26
+    - CONDA_PY=27
+    - CONDA_PY=33
+    - CONDA_PY=34
 
   global:
-    - secure: "C/53r3QGcEslm6rPT4/+IKxLVcXW/mgBIVyQ1eLCaFP4N4TqxFatfuiBQGP1TJI1uLDFVgaKjaDozJDYZcD0pq1fLqySZpHZa8m2eL/04+TH0HUtBtym+/e+QilqyxaRhvQNKcUDnjnRwSaLsLO0ol+a6+MjL6relDSIVDQmP3s="
+    - secure: "COVdFxDnyNRNJrDyPQJA6jA91sFEfR2OJhpBHOKprVb40AJ8tO0mwYh3Vrx+xjp/8OKeaflP7lcIYUITb98V/dgLV7BDeNrF5wW9A4lrqjwfG0DEW8zcfQwSljHzCIrw+RVg7FegOZjmEDG1wUF39z6q+7/mB9MFqatB8WYJW18="
 
 install:
   - source continuous-integration/travis/install_$TRAVIS_OS_NAME.sh
 
 script:
-  - conda build astropy-0.3.x --quiet
-  - conda build astropy-0.4.x --quiet
-  - conda build astropy-1.0.x --quiet
+  - conda build obspy-0.10.0rc1
 
 after_success:
-  - python continuous-integration/move-conda-package.py astropy-0.3.x
-  - python continuous-integration/move-conda-package.py astropy-0.4.x
-  - python continuous-integration/move-conda-package.py astropy-1.0.x
+  - python continuous-integration/move-conda-package.py obspy-0.10.0rc1
   - binstar -t $BINSTAR_TOKEN upload --force *.tar.bz2
