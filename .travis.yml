@@ -22,4 +22,4 @@ script:
 
 after_success:
   - python continuous-integration/move-conda-package.py obspy-0.10.0rc1
-  - binstar -t $BINSTAR_TOKEN upload --force *.tar.bz2
+  - binstar -t $BINSTAR_TOKEN upload --force *.tar.bz2 --channel travis
