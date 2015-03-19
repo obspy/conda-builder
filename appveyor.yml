@@ -128,6 +128,9 @@ test_script:
   # is set dynamically. This unfortunately mean that conda build --output
   # doesn't really work.
   #
+  - "%CMD_IN_ENV% conda info"
+  - "%CMD_IN_ENV% conda build --version"
+  - "%CMD_IN_ENV% conda update conda conda-build binstar jinja2 --yes"
   - "%CMD_IN_ENV% conda build obspy-0.10.0rc1"
     #- "%CMD_IN_ENV% conda build obspy-0.10.0 --quiet"
 
