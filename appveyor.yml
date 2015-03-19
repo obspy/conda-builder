@@ -131,13 +131,13 @@ test_script:
   - "%CMD_IN_ENV% conda info"
   - "%CMD_IN_ENV% conda build --version"
   - "%CMD_IN_ENV% conda update conda conda-build binstar jinja2 --yes"
-  - "%CMD_IN_ENV% conda build obspy-0.10.0rc1"
+  - "%CMD_IN_ENV% conda build obspy-0.10.0"
     #- "%CMD_IN_ENV% conda build obspy-0.10.0 --quiet"
 
   # Move the conda package into the current directory, to register it
   # as an "artifact" for Appveyor. cmd.exe does't have good globbing, so
   # we'll use a simple python script.
-  - python continuous-integration\move-conda-package.py obspy-0.10.0rc1
+  - python continuous-integration\move-conda-package.py obspy-0.10.0
   - python -c "print('=' * 40)"
   - python -c "import os; print(os.path.abspath(os.getcwd()))"
     #- python continuous-integration\move-conda-package.py obspy-0.10.0

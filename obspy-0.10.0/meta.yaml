@@ -1,10 +1,10 @@
 package:
   name: obspy
-  version: "0.10.0rc1"
+  version: "0.10.0"
 
 source:
-  fn: obspy-master.tar.gz
-  url: https://github.com/obspy/obspy/archive/a069d8c97b2b64a6d9f0231effb260713e342bf4.tar.gz
+  fn: obspy-0.10.0.tar.gz
+  url: https://github.com/obspy/obspy/archive/0.10.0.tar.gz
 
 build:
   number: 0
