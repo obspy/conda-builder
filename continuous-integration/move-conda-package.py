@@ -27,9 +27,6 @@ for ext in ['tar.bz2']:
         print(getattr(config, x))
     print("=" * 40)
     print(os.path.abspath(os.getcwd()))
-    print('=' * 40)
-    for item in os.environ.items():
-        print(" = ".join(item))
     binary_packages = glob.glob(binary_package_glob)
     for file_ in binary_packages:
         shutil.move(file_, '.')

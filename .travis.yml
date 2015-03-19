@@ -12,7 +12,7 @@ env:
     - CONDA_PY=34
 
   global:
-    - secure: "COVdFxDnyNRNJrDyPQJA6jA91sFEfR2OJhpBHOKprVb40AJ8tO0mwYh3Vrx+xjp/8OKeaflP7lcIYUITb98V/dgLV7BDeNrF5wW9A4lrqjwfG0DEW8zcfQwSljHzCIrw+RVg7FegOZjmEDG1wUF39z6q+7/mB9MFqatB8WYJW18="
+    - secure: "d3CTKzK4q+6tomK4DT0bCIloMw9uBcNk6CZMh604cDUkvQ6mKSo77wOrHhw1YMuTdbT1lSGo0T4IvC/DSFb6UemZ9AbXEiK3YZ+CmfSV2VVfKRjCLIkDecKQXjL05nk55xtsZXIOvvas/eOWifn/LS/dNY+a6fERpQwv3jbmmJk="
 
 install:
   - source continuous-integration/travis/install_$TRAVIS_OS_NAME.sh
