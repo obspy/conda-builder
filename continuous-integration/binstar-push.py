@@ -8,7 +8,10 @@ import traceback
 token = os.environ['BINSTAR_TOKEN']
 
 
-def upload_files(filenames, channels=None, package_type=None):
+def upload_file(filename, channels=None, package_type=None, version=None):
+    # avoid uploads of Miniconda executable
+    if "miniconda" in filename.lower():
+        return
     if channels is None:
         channels = ['appveyor', 'main']
     cmd = ['binstar', '-t', token, 'upload', '--force']
@@ -16,12 +19,9 @@ def upload_files(filenames, channels=None, package_type=None):
         cmd.extend(['--channel', channel])
     if package_type is not None:
         cmd.extend(['--package-type', package_type])
-    if not isinstance(filenames, (list, tuple)):
-        filenames = [filenames]
-    # avoid uploads of Miniconda executable
-    filenames = [filename for filename in filenames
-                 if "miniconda" not in filename.lower()]
-    cmd.extend(filenames)
+    if version is not None:
+        cmd.extend(['--version', version])
+    cmd.append(filename)
     try:
         subprocess.check_call(cmd)
     except subprocess.CalledProcessError:
@@ -29,11 +29,15 @@ def upload_files(filenames, channels=None, package_type=None):
 
 
 files = glob.glob('*.tar.bz2')
-print(files)
-upload_files(files)
+# version number has to be specified manually for package type "pypi" uploads
+# unfortunately it is not set in any env variable (only during bld.bat/build.sh run itself),
+# so we have to extract it from built conda package filename
+version = files[0].split("-")[1]
+for file_ in files:
+    print(file_)
+    upload_file(file_)
 
-files = []
 for ext in ['egg', 'whl', 'exe']:
-    files.extend(glob.glob('*.%s' % ext))
-print(files)
-upload_files(files, package_type="pypi")
+    for file_ in glob.glob('*.%s' % ext):
+        print(file_)
+        upload_file(file_, package_type="pypi", version=version)
