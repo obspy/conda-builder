@@ -6,19 +6,34 @@ import subprocess
 import traceback
 
 token = os.environ['BINSTAR_TOKEN']
-cmd = ['binstar', '-t', token, 'upload',
-       '--channel', 'appveyor', '--channel', 'main', '--force']
-files = [glob.glob('*.%s' % ext) for ext in ['tar.bz2', 'egg', 'whl', 'exe']]
+
+
+def upload_files(filenames, channels=None, package_type=None):
+    if channels is None:
+        channels = ['appveyor', 'main']
+    cmd = ['binstar', '-t', token, 'upload', '--force']
+    for channel in channels:
+        cmd.extend(['--channel', channel])
+    if package_type is not None:
+        cmd.extend(['--package-type', package_type])
+    if not isinstance(filenames, (list, tuple)):
+        filenames = [filenames]
+    # avoid uploads of Miniconda executable
+    filenames = [filename for filename in filenames
+                 if "miniconda" not in filename.lower()]
+    cmd.extend(filenames)
+    try:
+        subprocess.check_call(cmd)
+    except subprocess.CalledProcessError:
+        traceback.print_exc()
+
+
+files = glob.glob('*.tar.bz2')
 print(files)
-for files_ in files:
-    print(files_)
-    for file_ in files_:
-        print(file_)
-        if file_.startswith("Miniconda-"):
-            continue
-        print(file_)
-        cmd.append(file_)
-try:
-    subprocess.check_call(cmd)
-except subprocess.CalledProcessError:
-    traceback.print_exc()
+upload_files(files)
+
+files = []
+for ext in ['egg', 'whl', 'exe']:
+    files.extend(glob.glob('*.%s' % ext))
+print(files)
+upload_files(files, package_type="pypi")
