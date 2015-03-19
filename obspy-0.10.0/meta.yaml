@@ -3,8 +3,9 @@ package:
   version: "0.10.0"
 
 source:
-  fn: obspy-0.10.0.tar.gz
-  url: https://github.com/obspy/obspy/archive/0.10.0.tar.gz
+  fn: obspy-0.10.0.zip
+  url: https://pypi.python.org/packages/source/o/obspy/obspy-0.10.0.zip
+  md5: 936f8c68c3cea64943f3037a17517924
 
 build:
   number: 0
