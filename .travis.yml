@@ -1,3 +1,4 @@
+# file not up to date concerning release versions as we currently don't build packages in Travis
 language: c
 
 os:
