@@ -8,7 +8,7 @@ source:
   md5: 0d32bcf8e9534d32c91efee84291bad3
 
 build:
-  number: 0
+  number: 1
   preserve_egg_dir: yes
   detect_binary_files_with_prefix: true
 
@@ -22,7 +22,7 @@ requirements:
     - scipy
     - matplotlib
     - lxml
-    - sqlalchemy
+    - sqlalchemy <1.0.0
     - argparse # [py26]
     - flake8
   run:
@@ -34,7 +34,7 @@ requirements:
     - scipy
     - matplotlib
     - lxml
-    - sqlalchemy
+    - sqlalchemy <1.0.0
     - argparse # [py26]
     - flake8
 
