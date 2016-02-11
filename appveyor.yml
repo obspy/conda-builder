@@ -132,7 +132,7 @@ test_script:
   - "%CMD_IN_ENV% conda info"
   - "%CMD_IN_ENV% conda build --version"
   - "%CMD_IN_ENV% conda update -q conda conda-build anaconda-client jinja2 --yes"
-  - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD%"
+  - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --numpy %CONDA_NPY%"
 
   # Move the conda package into the current directory, to register it
   # as an "artifact" for Appveyor. cmd.exe does't have good globbing, so
