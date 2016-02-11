@@ -29,8 +29,8 @@ for ext in ['tar.bz2']:
     print(os.path.abspath(os.getcwd()))
     binary_packages = glob.glob(binary_package_glob)
     for file_ in binary_packages:
-        new =file_.replace("%s-"%sys.argv[1]),"%s-%s"%(sys.argv[1],sys.argv[2])
-        shutil.move(file_, new )
+        new =file_.replace("%s-"%sys.argv[1],"%s-np%s"%(sys.argv[1],sys.argv[2]))
+        shutil.move(file_, new)
         shutil.move(new, '.')
 
 # move egg/whl/exe, seems the source directory name is nowhere to find in ENV
