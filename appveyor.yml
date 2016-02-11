@@ -11,17 +11,17 @@ environment:
 
   matrix:
 
-    - PYTHON: "C:\\Python27_64"
-      PYTHON_VERSION: "2.7"
-      PYTHON_ARCH: "64"
-      CONDA_PY: "27"
-      CONDA_NPY: "19"
-
-    - PYTHON: "C:\\Python27_64"
-      PYTHON_VERSION: "2.7"
-      PYTHON_ARCH: "64"
-      CONDA_PY: "27"
-      CONDA_NPY: "18"
+#    - PYTHON: "C:\\Python27_64"
+#      PYTHON_VERSION: "2.7"
+#      PYTHON_ARCH: "64"
+#      CONDA_PY: "27"
+#      CONDA_NPY: "19"
+#
+#    - PYTHON: "C:\\Python27_64"
+#      PYTHON_VERSION: "2.7"
+#      PYTHON_ARCH: "64"
+#      CONDA_PY: "27"
+#      CONDA_NPY: "18"
 
     - PYTHON: "C:\\Python27_32"
       PYTHON_VERSION: "2.7"
@@ -132,7 +132,7 @@ test_script:
   - "%CMD_IN_ENV% conda info"
   - "%CMD_IN_ENV% conda install conda-build -q --yes"
   - "%CMD_IN_ENV% conda build --version"
-  - "%CMD_IN_ENV% conda update -q conda conda-build anaconda-client jinja2 --yes"
+  - "%CMD_IN_ENV% conda update -q conda conda-build anaconda-client jinja2 wheel --yes"
   - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --numpy %CONDA_NPY% --no-test"
 
   # Move the conda package into the current directory, to register it
