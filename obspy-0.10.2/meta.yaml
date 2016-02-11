@@ -38,11 +38,11 @@ requirements:
     - argparse # [py26]
     - flake8
 
-#test:
+test:
   # Python imports
-#  imports:
-#    - obspy
-#    - obspy.mseed
+  imports:
+    - obspy
+    - obspy.mseed
 
 about:
   home: http://obspy.org
