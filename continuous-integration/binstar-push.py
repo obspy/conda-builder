@@ -14,7 +14,7 @@ def upload_file(filename, channels=None, package_type=None, version=None):
         return
     if channels is None:
         channels = ['appveyor', 'main']
-    cmd = ['anaconda', '-t', token, 'upload', '--force', '--quiet']
+    cmd = ['anaconda', '-t', token, 'upload', '--force']
     for channel in channels:
         cmd.extend(['--channel', channel])
     if package_type is not None:
