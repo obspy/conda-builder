@@ -23,17 +23,17 @@ environment:
 #      CONDA_PY: "27"
 #      CONDA_NPY: "18"
 
-    - PYTHON: "C:\\Python27_32"
-      PYTHON_VERSION: "2.7"
-      PYTHON_ARCH: "32"
-      CONDA_PY: "27"
-      CONDA_NPY: "19"
-
-    - PYTHON: "C:\\Python27_32"
-      PYTHON_VERSION: "2.7"
-      PYTHON_ARCH: "32"
-      CONDA_PY: "27"
-      CONDA_NPY: "18"
+#    - PYTHON: "C:\\Python27_32"
+#      PYTHON_VERSION: "2.7"
+#      PYTHON_ARCH: "32"
+#      CONDA_PY: "27"
+#      CONDA_NPY: "19"
+#
+#    - PYTHON: "C:\\Python27_32"
+#      PYTHON_VERSION: "2.7"
+#      PYTHON_ARCH: "32"
+#      CONDA_PY: "27"
+#      CONDA_NPY: "18"
 
     - PYTHON: "C:\\Python34_64"
       PYTHON_VERSION: "3.4"
@@ -130,7 +130,7 @@ test_script:
   # doesn't really work.
   #
   - "%CMD_IN_ENV% conda info"
-  - "%CMD_IN_ENV% conda install conda-build -q --yes"
+  - "%CMD_IN_ENV% conda install conda-build pip jinja2 anaconda-client -q --yes"
   - "%CMD_IN_ENV% conda build --version"
   - "%CMD_IN_ENV% conda update -q conda conda-build anaconda-client jinja2 wheel --yes"
   - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --numpy %CONDA_NPY% --no-test"
