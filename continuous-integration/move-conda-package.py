@@ -29,7 +29,10 @@ for ext in ['tar.bz2']:
     print(os.path.abspath(os.getcwd()))
     binary_packages = glob.glob(binary_package_glob)
     for file_ in binary_packages:
-        new =file_.replace("%s-"%sys.argv[1],"%s-np%s"%(sys.argv[1],sys.argv[2]))
+        if file.count("%s-"%sys.argv[1]) != 0:
+            new = file_.replace("%s-"%sys.argv[1],"%s-np%s"%(sys.argv[1],sys.argv[2]))
+        else:
+            new = file_.replace("%s."%sys.argv[1],"%s.np%s"%(sys.argv[1],sys.argv[2]))
         shutil.move(file_, new)
         shutil.move(new, '.')
 
