@@ -130,7 +130,7 @@ test_script:
   # doesn't really work.
   #
   - "%CMD_IN_ENV% conda info"
-  - "%CMD_IN_ENV% conda install conda-build"
+  - "%CMD_IN_ENV% conda install conda-build -q --yes"
   - "%CMD_IN_ENV% conda build --version"
   - "%CMD_IN_ENV% conda update -q conda conda-build anaconda-client jinja2 --yes"
   - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --numpy %CONDA_NPY% --no-test"
