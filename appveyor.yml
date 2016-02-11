@@ -137,7 +137,7 @@ test_script:
   # Move the conda package into the current directory, to register it
   # as an "artifact" for Appveyor. cmd.exe does't have good globbing, so
   # we'll use a simple python script.
-  - python continuous-integration\move-conda-package.py "%OBSPY_BUILD% %CONDA_NPY%"
+  - python continuous-integration\move-conda-package.py "%OBSPY_BUILD%" "%CONDA_NPY%"
   - python -c "print('=' * 40)"
   - python -c "import os; print(os.path.abspath(os.getcwd()))"
 
