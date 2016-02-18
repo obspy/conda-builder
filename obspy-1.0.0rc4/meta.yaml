@@ -37,6 +37,7 @@ requirements:
     - argparse # [py26]
     - flake8
     - requests
+    - decorator
 test:
   # Python imports
   imports:
