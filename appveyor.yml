@@ -11,6 +11,7 @@ environment:
 
   matrix:
 
+# next two are OK
 #    - PYTHON: "C:\\Python27_64"
 #      PYTHON_VERSION: "2.7"
 #      PYTHON_ARCH: "64"
@@ -23,6 +24,7 @@ environment:
 #      CONDA_PY: "27"
 #      CONDA_NPY: "18"
 
+# 32 is still buggy
 #    - PYTHON: "C:\\Python27_32"
 #      PYTHON_VERSION: "2.7"
 #      PYTHON_ARCH: "32"
@@ -35,6 +37,7 @@ environment:
 #      CONDA_PY: "27"
 #      CONDA_NPY: "18"
 
+# next two are OK
     - PYTHON: "C:\\Python34_64"
       PYTHON_VERSION: "3.4"
       PYTHON_ARCH: "64"
@@ -134,6 +137,7 @@ test_script:
   - "%CMD_IN_ENV% conda build --version"
   - "%CMD_IN_ENV% conda update -q conda conda-build anaconda-client jinja2 wheel --yes"
   - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --numpy %CONDA_NPY% --no-test"
+  #~ - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --numpy %CONDA_NPY%"
 
   # Move the conda package into the current directory, to register it
   # as an "artifact" for Appveyor. cmd.exe does't have good globbing, so
