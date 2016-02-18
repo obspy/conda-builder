@@ -1,0 +1,49 @@
+package:
+  name: obspy
+  version: "1.0.0rc3"
+
+source:
+  fn: obspy-1.0.0rc3.zip
+  url: https://www.geophysik.uni-muenchen.de/~megies/obspy-1.0.0rc3.zip
+
+build:
+  number: 0
+  preserve_egg_dir: yes
+  detect_binary_files_with_prefix: true
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - future
+    - numpy
+    - mock  # [py2k]
+    - scipy
+    - matplotlib
+    - lxml
+    - sqlalchemy
+    - argparse # [py26]
+    - flake8
+  run:
+    - python
+    - setuptools
+    - future
+    - numpy
+    - mock  # [py2k]
+    - scipy
+    - matplotlib
+    - lxml
+    - sqlalchemy
+    - argparse # [py26]
+    - flake8
+
+test:
+  # Python imports
+  imports:
+    - obspy
+    - obspy.mseed
+
+about:
+  home: http://obspy.org
+  license: LGPLv3
+  summary: "ObsPy: A Python Toolbox for seismology/seismological observatories."
