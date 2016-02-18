@@ -30,11 +30,12 @@ for ext in ['tar.bz2']:
     binary_packages = glob.glob(binary_package_glob)
     for file_ in binary_packages:
         # if file.count("%s-"%sys.argv[1]) != 0:
-        new = file_.replace("%s-"%sys.argv[1],"%s-np%s"%(sys.argv[1],sys.argv[2]))
+        # new = file_.replace("%s-"%sys.argv[1],"%s-np%s"%(sys.argv[1],sys.argv[2]))
+        # new = file_
         # else:
         #     new = file_.replace("%s."%sys.argv[1],"%s.np%s"%(sys.argv[1],sys.argv[2]))
-        shutil.move(file_, new)
-        shutil.move(new, '.')
+        # shutil.move(file_, new)
+        shutil.move(file_, '.')
 
 # move egg/whl/exe, seems the source directory name is nowhere to find in ENV
 # variables and conda config, so we have to glob our way in there
