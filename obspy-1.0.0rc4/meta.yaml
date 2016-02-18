@@ -3,7 +3,7 @@ package:
   version: "1.0.0rc4"
 
 source:
-  fn: obspy-1.0.0rc3.zip
+  fn: obspy-1.0.0rc4.zip
   url: https://www.geophysik.uni-muenchen.de/~megies/obspy-1.0.0rc4.zip
 
 build:
