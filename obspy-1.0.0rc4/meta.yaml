@@ -24,6 +24,8 @@ requirements:
     - sqlalchemy
     - argparse # [py26]
     - flake8
+    - requests
+    - decorator
   run:
     - python
     - setuptools
