@@ -36,7 +36,7 @@ requirements:
     - sqlalchemy
     - argparse # [py26]
     - flake8
-
+    - requests
 test:
   # Python imports
   imports:
