@@ -83,9 +83,9 @@ IF %PYTHON_ARCH% == 64 (
     )
 ) ELSE (
     ECHO Configuring Windows SDK %WINDOWS_SDK_VERSION% for Python %MAJOR_PYTHON_VERSION% on a 32 bit architecture
-        SET DISTUTILS_USE_SDK=1
-        SET MSSdk=1
-        "%WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /x86 /release
+    SET DISTUTILS_USE_SDK=1
+    SET MSSdk=1
+    "%WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /x86 /release
 
     ECHO Executing: %COMMAND_TO_RUN%
     call %COMMAND_TO_RUN% || EXIT 1
