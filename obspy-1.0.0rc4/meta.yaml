@@ -42,7 +42,7 @@ test:
   # Python imports
   imports:
     - obspy
-    - obspy.mseed
+    - obspy.io.mseed
 
 about:
   home: http://obspy.org
