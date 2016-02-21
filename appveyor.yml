@@ -125,10 +125,10 @@ artifacts:
   - path: '*.whl'
   - path: '*obspy*.exe'
 
-#on_success:
+on_success:
   # Upload built binaries to binstar.org. The globbing and handling of the
   # exit-status code is tricky in cmd.exe or powershell, so we're just using
   # a python script.
-#  - appveyor AddMessage "Uploading Conda Packages"
-#  - python continuous-integration\binstar-push.py
-#  - appveyor AddMessage "Uploading Conda Packages Done"
+  - appveyor AddMessage "Uploading Conda Packages"
+  - python continuous-integration\binstar-push.py
+  - appveyor AddMessage "Uploading Conda Packages Done"
