@@ -6,7 +6,7 @@ REM python -c "print('=' * 40)"
 python setup.py install
 REM the following doesn't work because it gets line-wrapped in the middle of the string?!
 REM python -c 'import pip; pip.main(["install", "wheel"])'
-REM python setup.py bdist_egg
-REM python setup.py bdist_wheel
-REM python setup.py bdist_wininst
+python setup.py bdist_egg
+python setup.py bdist_wheel
+python setup.py bdist_wininst
 if errorlevel 1 exit 1
