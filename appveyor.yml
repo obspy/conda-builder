@@ -107,7 +107,8 @@ test_script:
   - appveyor AddMessage "Running Conda pre-install Done"
 #  - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --numpy %CONDA_NPY% --no-test"
   - appveyor AddMessage "Running Conda Build"
-  - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --no-test"
+  - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY%"
+#  - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --no-test"
   - appveyor AddMessage "Running Conda Build Done"
 #
   # Move the conda package into the current directory, to register it
@@ -130,5 +131,5 @@ on_success:
   # exit-status code is tricky in cmd.exe or powershell, so we're just using
   # a python script.
   - appveyor AddMessage "Uploading Conda Packages"
-  # - python continuous-integration\binstar-push.py
+  - python continuous-integration\binstar-push.py
   - appveyor AddMessage "Uploading Conda Packages Done"
