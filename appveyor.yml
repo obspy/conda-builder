@@ -81,10 +81,6 @@ install:
   - appveyor AddMessage "Installing Miniconda Done"
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
-build: false
-
-test_script:
-
   # Remove LICENSE and README.md files here which can conflict with glue's
   - rm LICENSE README.md
 
@@ -106,19 +102,17 @@ test_script:
   - "%CMD_IN_ENV% conda build --version"
   - "%CMD_IN_ENV% pip install pyimgur"
   - appveyor AddMessage "Running Conda pre-install Done"
+
+build:
 #  - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --numpy %CONDA_NPY% --no-test"
   - appveyor AddMessage "Running Conda Build"
   - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY%"
 #  - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --no-test"
   - appveyor AddMessage "Running Conda Build Done"
+
+test_script:
+  - appveyor AddMessage "In 'test_script' block"
 #
-  # Move the conda package into the current directory, to register it
-  # as an "artifact" for Appveyor. cmd.exe does't have good globbing, so
-  # we'll use a simple python script.
-  - appveyor AddMessage "Moving Conda Packages"
-  - python continuous-integration\move-conda-package.py "%OBSPY_BUILD%" "%CONDA_NPY%"
-  - python -c "print('=' * 40)"
-  - python -c "import os; print(os.path.abspath(os.getcwd()))"
 
 artifacts:
   # Archive the generated conda package in the ci.appveyor.com build report.
@@ -128,6 +122,13 @@ artifacts:
   - path: '*obspy*.exe'
 
 on_success:
+  # Move the conda package into the current directory, to register it
+  # as an "artifact" for Appveyor. cmd.exe does't have good globbing, so
+  # we'll use a simple python script.
+  - appveyor AddMessage "Moving Conda Packages"
+  - python continuous-integration\move-conda-package.py "%OBSPY_BUILD%" "%CONDA_NPY%"
+  - python -c "print('=' * 40)"
+  - python -c "import os; print(os.path.abspath(os.getcwd()))"
   # Upload built binaries to binstar.org. The globbing and handling of the
   # exit-status code is tricky in cmd.exe or powershell, so we're just using
   # a python script.
