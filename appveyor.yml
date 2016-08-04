@@ -102,16 +102,16 @@ install:
   - "%CMD_IN_ENV% conda build --version"
   - "%CMD_IN_ENV% pip install pyimgur"
   - appveyor AddMessage "Running Conda pre-install Done"
-
-build:
 #  - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --numpy %CONDA_NPY% --no-test"
   - appveyor AddMessage "Running Conda Build"
   - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY%"
 #  - "%CMD_IN_ENV% conda build -q %OBSPY_BUILD% --python %CONDA_PY% --no-test"
   - appveyor AddMessage "Running Conda Build Done"
 
-test_script:
-  - appveyor AddMessage "In 'test_script' block"
+build:
+    verbosity: detailed
+
+# test_script:
 #
 
 artifacts:
