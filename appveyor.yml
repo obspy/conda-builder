@@ -102,6 +102,7 @@ test_script:
   - "%CMD_IN_ENV% conda update -q conda --yes"
   - "%CMD_IN_ENV% conda install conda-build pip jinja2 anaconda-client wheel flake8 requests mock future -q --yes"
   - "%CMD_IN_ENV% conda update conda-build pip jinja2 anaconda-client wheel flake8 requests mock future -q --yes"
+  - "%CMD_IN_ENV% conda install conda-build=1.21.7 -q --yes"
   - "%CMD_IN_ENV% conda build --version"
   - "%CMD_IN_ENV% pip install pyimgur"
   - appveyor AddMessage "Running Conda pre-install Done"
